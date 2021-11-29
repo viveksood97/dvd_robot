@@ -21,7 +21,7 @@ source ~/catkin_ws/devel/setup.bash
 catkin_make
 ```
 ## Run
-1. Launch using launch file
+1. Launch using launch fil
 ```
 cd ~/catkin_ws/
 source ~/catkin_ws/devel/setup.bash
