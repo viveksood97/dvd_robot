@@ -64,13 +64,7 @@ void AvoidWalls::lidar_callback(
     velocity_cmd.angular.z = 0.0;
   } else {
     ROS_WARN_STREAM("Obstacle Detected: Turning Manuevers Initiated");
-
-    // stop moving forward
     velocity_cmd.linear.x = 0.0;
-
-    // turn left MAX_ONE_SIDE_TURN_COUNT times: ang.z_vel = 1.0
-    // and then right MAX_ONE_SIDE_TURN_COUNT times: ang.z_vel = -1.0
-    // and repeat
     velocity_cmd.angular.z = 1.0;
   }
 
