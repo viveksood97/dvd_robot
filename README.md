@@ -14,7 +14,7 @@ Task: Modify the TurtleBot simulation from the lecture and implement a simple wa
 ```
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src/
-git clone https://github.com/viveksood97/beginner_tutorials
+git clone https://github.com/viveksood97/dvd_robot.git
 cd ../
 source /opt/ros/noetic/setup.bash
 source ~/catkin_ws/devel/setup.bash
@@ -25,25 +25,14 @@ catkin_make
 ```
 cd ~/catkin_ws/
 source ~/catkin_ws/devel/setup.bash
-roslaunch beginner_tutorials launchPubSub.launch
+roslaunch dvd_robot dvd_robot.launch
 ```
-2. Launch using launch file with string argument
-```
-cd ~/catkin_ws/
-source ~/catkin_ws/devel/setup.bash
-roslaunch beginner_tutorials launchPubSub.launch newString:=anyString
-```
-3. To change the string use the service: /change_string
-```
-cd ~/catkin_ws/
-source ~/catkin_ws/devel/setup.bash
-rosservice call /change_string AnotherString
-```
+
 4. Launch using launch file with rosbag recording on
 ```
 cd ~/catkin_ws/
 source ~/catkin_ws/devel/setup.bash
-roslaunch beginner_tutorials launchPubSub.launch recordbag:=true
+roslaunch dvd_robot dvd_robot.launch recordbag:=true
 ```
 ## Output
 The rqt_console and rqt_logger_level output

@@ -44,21 +44,21 @@ bool AvoidWalls::not_obstacle(const std::vector<float>& laserscan_data_range) {
 }
 
 void AvoidWalls::lidar_callback(
-  const sensor_msgs::LaserScan::ConstPtr& laserscan_msg) {
+  const sensor_msgs::LaserScan::ConstPtr& lidar_data) {
   int range = 20;
   int front_ind = 0;
   int left_ind = 0 + range;
   int right_ind = 360 - range;
   this->thresh = 1;
   ROS_INFO_STREAM("Laser data::"
-                  << " Left: " << laserscan_msg->ranges[left_ind]
-                  << " Front: " << laserscan_msg->ranges[front_ind]
-                  << " Right: " << laserscan_msg->ranges[right_ind]);
+  << " Left: " << lidar_data->ranges[left_ind]
+  << " Front: " << lidar_data->ranges[front_ind]
+  << " Right: " << lidar_data->ranges[right_ind]);
 
   geometry_msgs::Twist velocity_cmd;
 
   // check for obstacles:
-  if (this->not_obstacle(laserscan_msg->ranges)) {
+  if (this->not_obstacle(lidar_data->ranges)) {
     // move forward
     velocity_cmd.linear.x = 0.5;
     velocity_cmd.angular.z = 0.0;
