@@ -8,8 +8,8 @@
  */
 
 
-#ifndef INCLUDE_DVD_ROBOT_OBSTACLE_AVOIDANCE_HPP_
-#define INCLUDE_DVD_ROBOT_OBSTACLE_AVOIDANCE_HPP_
+#ifndef INCLUDE_DVD_ROBOT_AVOID_WALLS_HPP_
+#define INCLUDE_DVD_ROBOT_AVOID_WALLS_HPP_
 
 #include <geometry_msgs/Twist.h>
 #include <ros/ros.h>
@@ -82,4 +82,4 @@ class AvoidWalls {
   bool not_obstacle(const std::vector<float>& laserscan_data_range);
 };
 
-#endif  // INCLUDE_DVD_ROBOT_OBSTACLE_AVOIDANCE_HPP_
+#endif  // INCLUDE_DVD_ROBOT_AVOID_WALLS_HPP_
