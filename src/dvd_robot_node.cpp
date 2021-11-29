@@ -16,7 +16,12 @@
 
 #include <dvd_robot/avoid_walls.hpp>
 
-
+ /**
+ * @brief Main function
+ * @param argc number of input arguments
+ * @param argv char pointer containing arguments
+ * @return 0
+ */
 int main(int argc, char **argv) {
   ros::init(argc, argv, "dvd_robot");
   ros::NodeHandle nh;

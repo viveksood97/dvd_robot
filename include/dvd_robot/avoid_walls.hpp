@@ -21,64 +21,40 @@
 #include <string>
 #include <vector>
 
+/// @class AvoidWalls
+/// @brief Class to avoid obstacles/walls
 class AvoidWalls {
  public:
   /**
-   * @brief Construct a new Obstacle Avoidance object
-   * 
-   * @param nh 
-   */
+  * @brief Constructor
+  * @param nh node handler
+  */
   explicit AvoidWalls(ros::NodeHandle nh);
 
   /**
-   * @brief Destroy the Obstacle Avoidance object
-   * 
-   */
+  * @brief Destructor
+  */
   ~AvoidWalls();
 
  private:
   ros::NodeHandle nh;
-
-  /**
-   * @brief publisher object for the /cmd_vel topic
-   * 
-   */
   ros::Publisher vel_publisher;
-
-  /**
-   * @brief subsriber to the /sensor_msgs/LaserScan topic
-   * 
-   */
   ros::Subscriber lidar_subscriber;
+  float thresh = 0.6;  // in meters
 
   /**
-   * @brief minimum distance of the bot from the obstacle
-   * 
-   */
-  float thresh = 0.6;  // in metres
-
-  int turn_count = 0;
-  int MAX_ONE_SIDE_TURN_COUNT = 100;
-
-
-  /**
-   * @brief Callback method for the laserscan subscriber
-   * 
-   * @param laserscan_data laserscan topic message
-   */
+  * @brief callback for laser scan
+  * @param laserscan_msg sensor_msgs::LaserScan::ConstPtr pointer
+  * @return void
+  */
   void lidar_callback(
             const sensor_msgs::LaserScan::ConstPtr& laserscan_msg);
 
-  /**
-   * @brief to check if there
-   * 
-   * @param laserscan_data_range distances of the obstacles at every angle from 0-360
-   * @param angle_range arc angle to get the area that should be obstacle free in either side
-   *                    if angle_range=10:
-   *                    obstacles will be checked in range: 10 deg left and 10 deg right of the bot 
-   * @return true if the path is clear and there are no obstacles with a certain range 
-   * @return false if obstacle/s is/are there within a certain range
-   */
+ /**
+  * @brief check for obstacles
+  * @param laserscan_data_range std::vector<float> pointer
+  * @return bool
+  */
   bool not_obstacle(const std::vector<float>& laserscan_data_range);
 };
 
