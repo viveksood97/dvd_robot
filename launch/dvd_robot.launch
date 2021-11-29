@@ -1,0 +1,25 @@
+<launch>
+  <arg name="gazebo" default="true" />
+  <arg name = "recordbag" default = "false"/>
+
+  <include 
+  file="$(find turtlebot3_gazebo)/launch/turtlebot3_world.launch"
+  if="$(arg gazebo)"
+  />
+
+  <node 
+  pkg="dvd_robot"
+  name="dvd_robot_node"
+  type="dvd_robot_node"
+  />
+
+  <node 
+  pkg="rosbag" 
+  type="record" 
+  name="record" 
+  output="screen" 
+  args="-O $(find beginner_tutorials)/results/ros_bag.bag --duration=15 --all" 
+  if="$(arg recordbag)"
+  />
+
+</launch>
